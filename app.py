@@ -7,11 +7,11 @@ app = Flask(__name__)
 mysql = MySQL()
 
 # MySQL configurations
-app.config["MYSQL_DATABASE_USER"] =  os.environ["MYSQL_USER"]
-app.config["MYSQL_DATABASE_PASSWORD"] = os.environ["MYSQL_PASSWORD"]
-app.config["MYSQL_DATABASE_DB"] = os.environ["MYSQL_DATABASE"]
-app.config["MYSQL_DATABASE_HOST"] = os.environ["MYSQL_SERVICE_HOST"]
-app.config["MYSQL_DATABASE_PORT"] = int(os.environ["MYSQL_SERVICE_PORT"])
+app.config["MYSQL_DATABASE_USER"] =  os.environ.get("MYSQL_USER",'user')
+app.config["MYSQL_DATABASE_PASSWORD"] = os.environ.get("MYSQL_PASSWORD",'password')
+app.config["MYSQL_DATABASE_DB"] = os.environ.get("MYSQL_DATABASE","db")
+app.config["MYSQL_DATABASE_HOST"] = os.environ.get("MYSQL_SERVICE_HOST","db")
+app.config["MYSQL_DATABASE_PORT"] =os.environ.get("MYSQL_SERVICE_PORT",'3306)
 mysql.init_app(app)
 
 
