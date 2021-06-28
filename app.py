@@ -111,7 +111,7 @@ def update_user():
         return jsonify("Please provide id, name, email and pwd")
 
 
-@app.route("/delete/<int:user_id>",methods=["DELETE])
+@app.route("/delete/<int:user_id>",methods=["DELETE"])
 def delete_user(user_id):
     """Function to delete a user from the MySQL database"""
     try:
