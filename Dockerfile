@@ -1,12 +1,8 @@
 FROM python
 
-RUN apt-get clean \
-    && apt-get -y update
+RUN apt-get clean && apt-get -y update
 
-RUN apt-get -y install \
-    nginx \
-    python3-dev \
-    build-essential
+RUN apt-get -y install nginx python3-dev build-essential
 
 WORKDIR /app
 
