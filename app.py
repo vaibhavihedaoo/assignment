@@ -117,7 +117,7 @@ def delete_user(user_id):
     try:
         conn = mysql.connect()
         cursor = conn.cursor()
-        cursor.execute("DELETE FROM users WHERE user_id=%s",user_id)
+        cursor.execute("DELETE FROM users WHERE user_id=%d",user_id)
         conn.commit()
         cursor.close()
         conn.close()
