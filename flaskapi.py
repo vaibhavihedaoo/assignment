@@ -7,7 +7,7 @@ app = Flask(__name__)
 mysql = MySQL()
 
 # MySQL configurations
-app.config["MYSQL_DATABASE_USER"] = "root"
+app.config["MYSQL_DATABASE_USER"] =  os.getenv["MYSQL_USER"]
 app.config["MYSQL_DATABASE_PASSWORD"] = os.getenv("db_root_password")
 app.config["MYSQL_DATABASE_DB"] = os.getenv("db_name")
 app.config["MYSQL_DATABASE_HOST"] = os.getenv("MYSQL_SERVICE_HOST")
@@ -111,7 +111,7 @@ def update_user():
         return jsonify("Please provide id, name, email and pwd")
 
 
-@app.route("/delete/<int:user_id>")
+@app.route("/delete/<int:user_id>",methods=["DELETE])
 def delete_user(user_id):
     """Function to delete a user from the MySQL database"""
     try:
