@@ -1,9 +1,12 @@
 FROM python
 
-RUN apt-get update
-RUN apt-get clean && apt-get -y update
+RUN apk update && \
+    apk add --virtual build-deps gcc python-dev musl-dev 
+RUN apk add nginx
 
-RUN apt-get -y install nginx python3-dev build-essential
+RUN apk update && \
+    apk add --virtual build-deps gcc python-dev musl-dev
+
 
 WORKDIR /app
 
