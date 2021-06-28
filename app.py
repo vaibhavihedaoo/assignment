@@ -30,7 +30,7 @@ def add_user():
     pwd = json["pwd"]
     if name and email and pwd and request.method == "POST":
         sql = "INSERT INTO users(user_name, user_email, user_password) " \
-              "VALUES(%s, %s, %s)"
+              "VALUES(%s,%s,%s)"
         data = (name, email, pwd)
         try:
             conn = mysql.connect()
@@ -71,7 +71,7 @@ def user(user_id):
     try:
         conn = mysql.connect()
         cursor = conn.cursor()
-        cursor.execute("SELECT * FROM users WHERE user_id=%s", user_id)
+        cursor.execute("SELECT * FROM users WHERE user_id=%s",user_id)
         row = cursor.fetchone()
         cursor.close()
         conn.close()
@@ -117,7 +117,7 @@ def delete_user(user_id):
     try:
         conn = mysql.connect()
         cursor = conn.cursor()
-        cursor.execute("DELETE FROM users WHERE user_id=%s", user_id)
+        cursor.execute("DELETE FROM users WHERE user_id=%s",user_id)
         conn.commit()
         cursor.close()
         conn.close()
